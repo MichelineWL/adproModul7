@@ -97,3 +97,12 @@ Menyatukan semua logika dan operasi database dalam satu Model akan menimbulkan c
 Postman memudahkan pengujian API dengan cepat. Kita bisa melakukan request HTTP, menambahkan autentikasi, dan melihat respon secara langsung. Fitur seperti environment, collection runner, dan test script mempermudah pengujian berulang serta memvalidasi konsistensi API di setiap tahap pengembangan.
 
 #### Reflection Publisher-3
+1. Penggunaan Push Model
+Pada tutorial ini, publisher secara proaktif mengirim pembaruan ke semua subscriber. Begitu terjadi perubahan (misal, create, update, atau delete), publisher akan mengeksekusi mekanisme pengiriman notifikasi ke masing-masing subscriber.
+
+2. Keunggulan dan Kekurangan Pull Model
+Keunggulan: Subscriber hanya mengambil data yang benar-benar diperlukan, sehingga dapat mengurangi beban pengiriman data.
+Kekurangan: Subscriber harus memiliki pengetahuan tentang cara dan waktu untuk mengambil data, sehingga menambah kerumitan di sisi subscriber dan berpotensi menimbulkan delay.
+
+3. Konsekuensi Tanpa Multi-threading
+Jika kita tidak menggunakan multi-threading, proses pengiriman notifikasi akan berjalan secara berurutan. Hal ini berpotensi menciptakan bottleneck saat jumlah subscriber banyak atau jika proses pengiriman ke salah satu subscriber memakan waktu lama. Akibatnya, kinerja dan responsivitas sistem menurun.
