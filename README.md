@@ -77,7 +77,6 @@ This is the place for you to write reflections:
 ### Mandatory (Publisher) Reflections
 
 #### Reflection Publisher-1
-
 1. Penggunaan Trait vs. Single Model
 Apabila kita hanya memiliki satu tipe observer, menggunakan satu struct saja sudah memadai. Namun, pada dasarnya Observer Pattern lebih fleksibel jika kita mendefinisikan trait, sehingga di kemudian hari kita bisa menambah atau memodifikasi observer lain tanpa perlu banyak perubahan pada kode utama.
 
@@ -86,6 +85,15 @@ DashMap memungkinkan pencarian data dengan kompleksitas O(1) dan juga mendukung 
 
 3. Thread-safety vs. Singleton
 Pola Singleton hanya memastikan jumlah instance terbatas pada satu, tapi tidak serta-merta menjadikannya aman di lingkungan multithreaded. Kita tetap perlu mekanisme sinkronisasi, seperti DashMap atau lock lain. Jadi, walau Singleton berguna, itu belum cukup untuk menangani persoalan concurrency.
+
 #### Reflection Publisher-2
+1. Pemisahan Service dan Repository
+Memecah kode menjadi Service (untuk logika bisnis) dan Repository (untuk akses data) membantu menjaga tanggung jawab masing-masing bagian agar tidak saling bercampur. Dengan begitu, perubahan di lapisan data tidak akan berdampak besar pada logika bisnis, dan sebaliknya.
+
+2. Dampak Jika Hanya Menggunakan Model
+Menyatukan semua logika dan operasi database dalam satu Model akan menimbulkan coupling yang tinggi. Jika Program, Subscriber, dan Notification saling berinteraksi dalam satu tempat, perubahan kecil pada satu bagian bisa mengganggu keseluruhan sistem. Dengan memisahkannya, kita dapat mengurangi kompleksitas dan meningkatkan kemudahan pemeliharaan.
+
+3. Manfaat Postman
+Postman memudahkan pengujian API dengan cepat. Kita bisa melakukan request HTTP, menambahkan autentikasi, dan melihat respon secara langsung. Fitur seperti environment, collection runner, dan test script mempermudah pengujian berulang serta memvalidasi konsistensi API di setiap tahap pengembangan.
 
 #### Reflection Publisher-3
