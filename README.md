@@ -78,6 +78,14 @@ This is the place for you to write reflections:
 
 #### Reflection Publisher-1
 
+1. Penggunaan Trait vs. Single Model
+Apabila kita hanya memiliki satu tipe observer, menggunakan satu struct saja sudah memadai. Namun, pada dasarnya Observer Pattern lebih fleksibel jika kita mendefinisikan trait, sehingga di kemudian hari kita bisa menambah atau memodifikasi observer lain tanpa perlu banyak perubahan pada kode utama.
+
+2. Efisiensi DashMap daripada Vec
+DashMap memungkinkan pencarian data dengan kompleksitas O(1) dan juga mendukung akses thread-safe tanpa kita harus mengatur lock manual. Sementara itu, Vec membutuhkan pencarian linear (O(n)), sehingga kurang efisien jika kita sering melakukan lookup.
+
+3. Thread-safety vs. Singleton
+Pola Singleton hanya memastikan jumlah instance terbatas pada satu, tapi tidak serta-merta menjadikannya aman di lingkungan multithreaded. Kita tetap perlu mekanisme sinkronisasi, seperti DashMap atau lock lain. Jadi, walau Singleton berguna, itu belum cukup untuk menangani persoalan concurrency.
 #### Reflection Publisher-2
 
 #### Reflection Publisher-3
